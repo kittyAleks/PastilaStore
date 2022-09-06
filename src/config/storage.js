@@ -2,9 +2,7 @@ import React from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const set_token = async (token) => {
-  if (token) {
-    await AsyncStorage.setItem("token", JSON.stringify(token));
-  }
+  await AsyncStorage.setItem("token", JSON.stringify(token));
 };
 
 export const get_token = async () => {
@@ -20,6 +18,16 @@ export const save_language = async (lang) => {
 export const get_language = async () => {
   const language = await AsyncStorage.getItem("language");
   return JSON.parse(language);
+};
+export const save_notific_token = async (token) => {
+  await AsyncStorage.setItem("notification_token", JSON.stringify(token));
+};
+export const get_notific_token = async () => {
+  const notific_token = await AsyncStorage.getItem("notification_token");
+  return JSON.parse(notific_token);
+};
+export const remove_notific_token = async () => {
+  await AsyncStorage.removeItem("notification_token");
 };
 
 // export const getToken = () => {

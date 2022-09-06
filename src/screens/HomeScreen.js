@@ -7,17 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { MainProductList } from "./components/MainProductList";
 // import { NativeBaseProvider } from "native-base/src/core/NativeBaseProvider";
 import { getProducts } from "../store/actions";
-import {useTranslation} from "react-i18next";
-
+import { useTranslation } from "react-i18next";
 const MAIN_URL = "http://localhost"; // TODO: move to config
 
 export const HomeScreen = ({ navigation }) => {
-  const products = useSelector(state => state.products)
-  console.log('QQQproducts', products);
-  const [nickName, setNickname] = useState();
+  const products = useSelector(state => state.products);
+
   const [categories, setCategories] = useState();
   const dispatch = useDispatch();
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   useEffect(() => {
     axios.post(MAIN_URL + "/pastille")
@@ -40,16 +38,16 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     // <NativeBaseProvider>
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          data={t('home.data', { returnObjects: true })}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => {
-            console.log('EEEitem', item)
-            return <MainProductList item={item} />;
-          }}
-        />
-      </SafeAreaView>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={products}
+        // data={t('home.data', { returnObjects: true })}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => {
+          return <MainProductList item={item} />;
+        }}
+      />
+    </SafeAreaView>
     // </NativeBaseProvider>
   );
 };

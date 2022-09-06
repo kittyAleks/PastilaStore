@@ -56,6 +56,28 @@ export const RootStack = () => {
       {/*}}*/}
       {/*  name="SignUpScreen"*/}
       {/*  component={SignUpScreen} />*/}
+
+      <Stack.Screen
+        name="Home"
+        component={AllTabNavigation}
+        options={{
+          headerTitle: "",
+          headerShown: false,
+          ...defaultOptions,
+          // headerBackground: () => <LinearGradient colors={['#F27527', '#F69493']} style={{height: '100%'}}/>,
+          headerLeft: () => {
+            return <HeaderButtons>
+              <Ionicons name="chevron-back" color="white" size={25}/>
+            </HeaderButtons>
+          },
+          headerR: () => {
+            return <HeaderButtons>
+              <Ionicons name="chevron-back" color="white" size={25}/>
+            </HeaderButtons>
+          },
+        }}
+      />
+
       <Stack.Screen options={{
         ...defaultOptions,
       }}
@@ -93,26 +115,6 @@ export const RootStack = () => {
           headerTitle: "",
           ...defaultOptions,
           // headerBackground: () => <LinearGradient colors={['#F27527', '#F69493']} style={{height: '100%'}}/>,
-        }}
-      />
-      <Stack.Screen
-        name="Home"
-        component={AllTabNavigation}
-        options={{
-          headerTitle: "",
-          headerShown: false,
-          ...defaultOptions,
-          // headerBackground: () => <LinearGradient colors={['#F27527', '#F69493']} style={{height: '100%'}}/>,
-          headerLeft: () => {
-            return <HeaderButtons>
-              <Ionicons name="chevron-back" color="white" size={25}/>
-            </HeaderButtons>
-          },
-          headerR: () => {
-            return <HeaderButtons>
-              <Ionicons name="chevron-back" color="white" size={25}/>
-            </HeaderButtons>
-          },
         }}
       />
     </Stack.Navigator>
